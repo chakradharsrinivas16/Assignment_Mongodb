@@ -154,7 +154,7 @@ class Queries():
                 {"$limit":int(input("Enter the value of N: "))}
             ]
         pprint(list(moviesCollection.aggregate(pipe)))
-    def top_N_Movies_For__every_Genre():
+    def top_N_Movies_For_every_Genre():
             pipe=[
                 {"$unwind":"$genres"},
                 {"$group":{"_id":"$genres"}}
