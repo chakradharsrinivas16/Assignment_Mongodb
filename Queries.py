@@ -1,8 +1,12 @@
-from database import moviesCollection,commentsCollection,theatersCollection,usersCollection
+from database import moviesCollection,commentsCollection,theatersCollection,usersCollection # importing created instances from database.py
+# Importing required libraries
 import datetime
 from dateutil import parser
 from pprint import pprint
 class Queries():
+    # Inserting record into their respective collections
+    def insert_record_dict(collection,data_dict):
+        collection.insert_one(data_dict)
     def insert_record(col_no):
         if col_no==1:
             record={
@@ -153,20 +157,11 @@ class Queries():
     def top_N_Movies_For__every_Genre():
         pipe=[
             {"$unwind":"$genres"},
-            {"$group":{"_id":"$genres"}}
+            {"$group":{"_id":"$genres"}},
+            {"$project":{"title":1}}
         ]
         for i in list(moviesCollection.aggregate(pipe)):
-            genre=i['_id']
-            print("Genre: "+genre)
-            pipe=[
-                {"$unwind":"$genres"},
-                {"$match":{"genres":genre}},
-                {"$sort":{"imdb.rating":-1}},
-                {"$match":{"imdb.rating":{"$ne":""}}},
-                {"$project":{"_id":0,"title":1,"rating":"$imdb.rating"}},
-                {"$limit":int(input("Enter the value of N: "))}
-            ] 
-            pprint(list(moviesCollection.aggregate(pipe))) 
+            print(i)
     def top10CitiesMostTheaters():
         pipe=[
             {"$group":{"_id":"$location.address.city","cnt":{"$sum":1}}},
