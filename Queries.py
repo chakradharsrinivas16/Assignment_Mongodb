@@ -157,11 +157,19 @@ class Queries():
     def top_N_Movies_For__every_Genre():
         pipe=[
             {"$unwind":"$genres"},
-            {"$group":{"_id":"$genres"}},
-            {"$project":{"title":1}}
+            {"$group":{"_id":"$genres"}}
         ]
         for i in list(moviesCollection.aggregate(pipe)):
-            print(i)
+            genre=i['_id']
+            print("Genre: "+genre)
+            query=[
+                {"$unwind":"$genres"},
+                {"$match":{"genres":genre}},
+                {"$sort":{"imdb.rating":-1}},
+                {"$match":{"imdb.rating":{"$ne":""}}},
+                {"$project":{"_id":0,"title":1,"rating":"$imdb.rating"}},
+                {"$limit":int(input("Enter the value of N: "))}
+            ]
     def top10CitiesMostTheaters():
         pipe=[
             {"$group":{"_id":"$location.address.city","cnt":{"$sum":1}}},
