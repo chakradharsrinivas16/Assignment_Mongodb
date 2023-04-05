@@ -155,28 +155,29 @@ class Queries():
             ]
         pprint(list(moviesCollection.aggregate(pipe)))
     def top_N_Movies_For__every_Genre():
-        pipe=[
-            {"$unwind":"$genres"},
-            {"$group":{"_id":"$genres"}}
-        ]
-        for i in list(moviesCollection.aggregate(pipe)):
-            genre=i['_id']
-            print("Genre: "+genre)
-            query=[
+            pipe=[
                 {"$unwind":"$genres"},
-                {"$match":{"genres":genre}},
-                {"$sort":{"imdb.rating":-1}},
-                {"$match":{"imdb.rating":{"$ne":""}}},
-                {"$project":{"_id":0,"title":1,"rating":"$imdb.rating"}},
-                {"$limit":int(input("Enter the value of N: "))}
+                {"$group":{"_id":"$genres"}}
             ]
+            for i in list(moviesCollection.aggregate(query)):
+                genre=i['_id']
+                print("Genre: "+genre)
+                query=[
+                    {"$unwind":"$genres"},
+                    {"$match":{"genres":genre}},
+                    {"$sort":{"imdb.rating":-1}},
+                    {"$match":{"imdb.rating":{"$ne":""}}},
+                    {"$project":{"_id":0,"title":1,"rating":"$imdb.rating"}},
+                    {"$limit":int(input("Enter the value of N: "))}
+                ]
+                pprint(list(moviesCollection.aggregate(pipe)))    
     def top10CitiesMostTheaters():
-        pipe=[
-            {"$group":{"_id":"$location.address.city","cnt":{"$sum":1}}},
-            {"$sort":{"cnt":-1}},
-            {"$limit":10}
-        ]
-        pprint(list(theatersCollection.aggregate(pipe)))
+            pipe=[
+                {"$group":{"_id":"$location.address.city","cnt":{"$sum":1}}},
+                {"$sort":{"cnt":-1}},
+                {"$limit":10}
+            ]
+            pprint(list(theatersCollection.aggregate(pipe)))
     def top10theatersNear(cod):
         theatersCollection.create_index([("location.geo", "2dsphere")])
         pprint(list(theatersCollection.find(
