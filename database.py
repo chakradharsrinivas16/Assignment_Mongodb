@@ -1,5 +1,7 @@
+# Importing the required libraries
 import pymongo
 import subprocess
+# creating an instance of mongo client
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 # Define database and collection names
 db_name = "demo"
@@ -7,12 +9,15 @@ collection_name_1 = "comments"
 collection_name_2 = "movies"
 collection_name_3 = "theaters"
 collection_name_4= "users"
+# creating instances for database and collections
 db_instance = myclient[db_name]
 commentsCollection=db_instance[collection_name_1]
 moviesCollection=db_instance[collection_name_2]
 theatersCollection=db_instance[collection_name_3]
 usersCollection=db_instance[collection_name_4]
 class create_database_collections():
+    # Return: Nothing
+    # Running mongodb commands to create database and collections
     def main():
         # Create database using MongoDB shell command
         subprocess.run(["mongo", "--eval", f"db.createDatabase('{db_name}')"])
