@@ -216,3 +216,15 @@ The aggregation pipeline consists of the following stages:
 
 - $limit: This stage limits the output to the first 10 documents, which are the cities with the highest count of theaters.
 
+### Test Run
+
+<img width="964" alt="Screenshot 2023-04-05 at 11 08 53 PM" src="https://user-images.githubusercontent.com/123494344/230160796-7b8abc31-9424-4152-a358-0cdcf77c70fc.png">
+<img width="669" alt="Screenshot 2023-04-05 at 11 09 16 PM" src="https://user-images.githubusercontent.com/123494344/230160950-a6989e88-097e-402a-abae-a46cbd00fe17.png">
+<img width="607" alt="Screenshot 2023-04-05 at 11 09 32 PM" src="https://user-images.githubusercontent.com/123494344/230160991-b5e59334-e420-4be6-8699-d5574e9e8130.png">
+<img width="705" alt="Screenshot 2023-04-05 at 11 09 45 PM" src="https://user-images.githubusercontent.com/123494344/230161006-03841406-2939-4131-bde7-ef7c4f93cafb.png">
+<img width="654" alt="Screenshot 2023-04-05 at 11 09 55 PM" src="https://user-images.githubusercontent.com/123494344/230161038-b8ba186f-c09d-4650-ab59-4d9fc8daa16f.png">
+<img width="605" alt="Screenshot 2023-04-05 at 11 10 10 PM" src="https://user-images.githubusercontent.com/123494344/230161066-013d3ec6-7ad4-4cdb-94a6-34d8aa7e89ec.png">
+<img width="808" alt="Screenshot 2023-04-05 at 11 10 28 PM" src="https://user-images.githubusercontent.com/123494344/230161272-470fc962-225a-4e7e-9f1a-e90c3a86ed8a.png">
+<img width="674" alt="Screenshot 2023-04-05 at 11 10 37 PM" src="https://user-images.githubusercontent.com/123494344/230161120-f187709b-16f3-4dcf-b4c8-c1b7a018363e.png">
+
+
