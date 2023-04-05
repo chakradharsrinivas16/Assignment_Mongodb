@@ -162,7 +162,7 @@ class Queries():
             for i in list(moviesCollection.aggregate(query)):
                 genre=i['_id']
                 print("Genre: "+genre)
-                query=[
+                pipe=[
                     {"$unwind":"$genres"},
                     {"$match":{"genres":genre}},
                     {"$sort":{"imdb.rating":-1}},
