@@ -1,5 +1,23 @@
 # Assignment_Mongodb
 
+### Database.py
+The written Python script that creates a database and collections in MongoDB and imports data from JSON files into the collections, The process is as below -
+
+- The script first imports the required libraries pymongo and subprocess. pymongo is the official Python driver for MongoDB, and subprocess is used to run shell commands from within Python.
+
+- Then, the script creates an instance of the MongoDB client using pymongo.MongoClient. The client connects to the default localhost MongoDB instance running on port 27017.
+
+- Next, the script defines the names of the database and collections to be created. Four collections are defined: comments, movies, theaters, and users.
+
+- After defining the names of the database and collections, the script creates instances of the database and collections using myclient[db_name] and db_instance[collection_name], respectively.
+
+- The create_database_collections class defines a main method, which is where the script actually creates the database and collections and imports data from JSON files into the collections.
+
+- The main method first creates the database using the mongo shell command db.createDatabase(). It then creates the collections using the mongo shell command db.createCollection(), passing in the database name as an argument.
+
+- Next, the script defines the paths to the JSON files containing the data to import. The script then uses the mongoimport shell command to import the data into the corresponding collections, passing in the database name, collection name, and file path as arguments.
+
+
 ### Question - 4.a.1
 
 This Python function that defines a MongoDB aggregation pipeline to find the top 10 users with the most comments. The pipeline consists of the following stages:
